@@ -9,7 +9,7 @@ then
 	echo "Performs neckcropping and conforming to isotropic"
 else
 	SUBJID=$1
-	if [[ ! -f "RawT2/${SUBJID}.nii*" ]]; then
+	if [[ ! -f "RawT2/${SUBJID}.nii.gz" ]]; then
 			echo "The Raw T2 file RawT2/$1 does not exist"
 			exit 1;
 	fi
