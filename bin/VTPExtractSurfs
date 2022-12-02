@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import VTPUtils
+import numpy
+import sys
+import os
+import freesurfer
+import nibabel
+import getopt
+
+opts, args = getopt.getopt(sys.argv[1:], "vh", ['surf-volgeom=', 'tkr-only'])
+
+if len(args) != 1:
+    print("The number of arguments must be 1")
+    print(sys.argv[0] + " <vtp file>")
+    exit()
+
+numpy.set_printoptions(precision = 3, formatter = {'all':lambda x: "%.3f" % x})
+
+inFileName = args[0]
+
+#Reader = vtk.vtkXMLPolyDataReader()
+#Reader.SetFileName(inFileName)
+#Reader.Update()
+
+inFilePrefix = os.path.splitext(inFileName)[0]
+
+geometryNIIFile = None
+
+verbose = False
+TKROnly = False
+for o, a in opts:
+    if o == '--surf-volgeom':
+        geometryNIIFile = a
+    if o == '--tkr-only':
+        TKROnly = True
+    if o == '-v':
+        verbose = True
+
+if verbose == True:
+    print(inFilePrefix)
+
+S = VTPUtils.readVTPSurf(inFileName)
+freesurfer.writeSurf(S, inFilePrefix + '_tkr.surf', fileFormat = 'binary', geometryNIIFile = geometryNIIFile)
+if TKROnly == False:
+   freesurfer.writeSurf(S, inFilePrefix + '_world.surf', fileFormat = 'binary', geometryNIIFile = None)
+    
