@@ -17,7 +17,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ============================================================================
-
+run()
+{
+  echo "$@"
+  "$@" || exit 1
+}
 [ $# -ge 2 ] || { echo "usage: $BASH_SOURCE <input_mask> <output_mask> [<keep_percent_ratio>]" 1>&2; exit 1; }
 f=$1
 outf=$2

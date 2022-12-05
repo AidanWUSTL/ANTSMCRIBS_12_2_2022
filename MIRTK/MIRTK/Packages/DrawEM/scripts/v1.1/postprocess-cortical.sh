@@ -17,7 +17,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ============================================================================
-
+run()
+{
+  echo "$@"
+  "$@" || exit 1
+}
 
 [ $# -eq 1 ] || { echo "usage: $(basename "$0") <subject>" 1>&2; exit 1; }
 
