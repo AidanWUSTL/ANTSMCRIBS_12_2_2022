@@ -353,7 +353,7 @@ then
 #       --output-data-type float \
 #       --output ${OUTPUTPREFIX}_brain_mask_dilated_to_alberts.nii.gz
 #fslmaths ${OUTPUTPREFIX}_brain_mask_dilated_to_alberts.nii.gz -add $TEMPLATEDIR/template-40_reg_mask.nii.gz -bin ${OUTPUTPREFIX}_alberts_moving_mask.nii.gz -odt char
-	exit
+	#exit
     T=`mktemp -d`
     P=`pwd`
     cd $T
