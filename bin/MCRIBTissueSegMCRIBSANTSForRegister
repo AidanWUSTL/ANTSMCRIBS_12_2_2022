@@ -320,7 +320,7 @@ export OMP_NUM_THREADS=`nproc`
 			--output-data-type short \
             --interpolation GenericLabel \
 			--output ${OUTPUTPREFIX}_template-40_brain_mask_hull_added.nii.gz
-    exit
+    #exit
     
 	################# HEMISPHERIC FISSURE ALIGNMENT #######################
 	# HIGHLIGHT THE NOTCH AT THE BACK BY MAKING A MASK OF THE VOXELS ADDED UNDER A CONVEX HULL
